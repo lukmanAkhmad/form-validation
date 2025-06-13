@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <form action="" id="form-field" novalidate>
+      <section class="section-input">
+        <div class="container-input">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+          <span class="error-message-email" aria-live="polite"></span>
+        </div>
+        <div class="container-input">
+          <label for="country">Country</label>
+          <select name="" id="country">
+            <option value="idn">Indonesia</option>
+            <option value="fr">France</option>
+            <option value="de">Germany</option>
+          </select>
+        </div>
+        <div class="container-input">
+          <label for="postal-code">Postal Code</label>
+          <input type="text" id="postal-code" required />
+          <span class="error-message-postal-code" aria-live="polite"></span>
+        </div>
+        <div class="container-input">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+          <span class="error-message-postal-code" aria-live="polite"></span>
+        </div>
+        <div class="container-input">
+          <label for="confirm-password">Confirm Password</label>
+          <input
+            type="password"
+            id="confirm-password"
+            name="confirm-password"
+            required
+          />
+          <span class="error-message-postal-code" aria-live="polite"></span>
+        </div>
+      </section>
+      <section class="section-btn">
+        <button id="btn-submit" type="button">Submit</button>
+      </section>
+    </form>
+  </body>
+</html>
