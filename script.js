@@ -8,7 +8,11 @@ const errorMessagePostalCode = document.querySelector(
   ".error-message-postal-code"
 );
 
-function showErrorInputEmail() {
+function checkEmail() {
+  if (inputEmail.validity.valid) {
+    errorMessageEmail.textContent = "";
+  }
+
   if (inputEmail.validity.valueMissing) {
     errorMessageEmail.textContent = "You need enter an email address.";
   } else if (inputEmail.validity.typeMismatch) {
@@ -46,23 +50,14 @@ function checkPostalCode() {
   }
 }
 
-inputEmail.addEventListener("input", () => {
-  console.log("input");
-  if (inputEmail.validity.valid) {
-    errorMessageEmail.textContent = "";
-  } else {
-    showErrorInputEmail();
-  }
-});
-
+inputEmail.addEventListener("input", checkEmail);
 countryField.addEventListener("change", checkPostalCode);
 postalCodeField.addEventListener("input", checkPostalCode);
 
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
   if (!inputEmail.validity.valid) {
-    showErrorInputEmail();
+    checkEmail();
     checkPostalCode();
   }
 });
-
