@@ -91,9 +91,8 @@ inputConfirmPassword.addEventListener("input", checkConfirmPassword);
 
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
-  if (!inputEmail.validity.valid) {
-    checkEmail();
-  }
+
+  checkEmail();
   checkPostalCode();
   checkPassword();
   checkConfirmPassword();
