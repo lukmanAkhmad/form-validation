@@ -57,8 +57,8 @@ function checkPostalCode() {
 }
 
 function checkPassword() {
-  const validPassword = "^[a-zA-Z0-9]{8,16}$";
-  const patternPassword = new RegExp(validPassword, "");
+  const passwordRegex = "^[a-zA-Z0-9]{8,16}$";
+  const patternPassword = new RegExp(passwordRegex, "");
 
   if (inputPassword.validity.valueMissing) {
     errorMessagePassword.textContent = "You need enter a password.";
