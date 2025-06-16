@@ -3,9 +3,15 @@ const inputEmail = document.querySelector("#email");
 const errorMessageEmail = document.querySelector(".error-message-email");
 const btnSubmit = document.querySelector("#btn-submit");
 const countryField = document.querySelector("#country");
-const postalCodeField = document.querySelector("#postal-code");
+const inputPostalCode = document.querySelector("#postal-code");
 const errorMessagePostalCode = document.querySelector(
   ".error-message-postal-code"
+);
+const inputPassword = document.querySelector("#password");
+const inputConfirmPassword = document.querySelector("#confirm-password");
+const errorMessagePassword = document.querySelector(".error-message-password");
+const errorMessageConfirmPassword = document.querySelector(
+  ".error-message-confirm-password"
 );
 
 function checkEmail() {
@@ -41,23 +47,54 @@ function checkPostalCode() {
 
   const constraint = new RegExp(constraints[countryField.value][0], "");
 
-  if (postalCodeField.value === "") {
+  if (inputPostalCode.value === "") {
     errorMessagePostalCode.textContent = errorMessage;
-  } else if (constraint.test(postalCodeField.value)) {
+  } else if (constraint.test(inputPostalCode.value)) {
     errorMessagePostalCode.textContent = "";
   } else {
     errorMessagePostalCode.textContent = constraints[countryField.value][1];
   }
 }
 
+function checkPassword() {
+  const validPassword = "^[a-zA-Z0-9]{8,16}$";
+  const patternPassword = new RegExp(validPassword, "");
+
+  if (inputPassword.validity.valueMissing) {
+    errorMessagePassword.textContent = "You need enter a password.";
+  } else if (!patternPassword.test(inputPassword.value)) {
+    errorMessagePassword.textContent =
+      "Password must be at least 8 - 16 characters long.";
+  } else if (patternPassword.test(inputPassword.value)) {
+    errorMessagePassword.textContent = "";
+  }
+}
+
+function checkConfirmPassword() {
+  const passwordValue = inputPassword.value;
+  const confirmPasswordValue = inputConfirmPassword.value;
+
+  if (passwordValue === confirmPasswordValue) {
+    errorMessageConfirmPassword.textContent = "Passwords Match.";
+  }
+
+  if (passwordValue !== confirmPasswordValue || confirmPasswordValue === "") {
+    errorMessageConfirmPassword.textContent = "Passwords do not match.";
+  }
+}
+
 inputEmail.addEventListener("input", checkEmail);
 countryField.addEventListener("change", checkPostalCode);
-postalCodeField.addEventListener("input", checkPostalCode);
+inputPostalCode.addEventListener("input", checkPostalCode);
+inputPassword.addEventListener("input", checkPassword);
+inputConfirmPassword.addEventListener("input", checkConfirmPassword);
 
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
   if (!inputEmail.validity.valid) {
     checkEmail();
-    checkPostalCode();
   }
+  checkPostalCode();
+  checkPassword();
+  checkConfirmPassword();
 });
