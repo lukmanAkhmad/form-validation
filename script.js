@@ -84,10 +84,14 @@ function checkConfirmPassword() {
 }
 
 inputEmail.addEventListener("input", checkEmail);
+inputEmail.addEventListener("blur", checkEmail);
 countryField.addEventListener("change", checkPostalCode);
 inputPostalCode.addEventListener("input", checkPostalCode);
+inputPostalCode.addEventListener("blur", checkPostalCode);
 inputPassword.addEventListener("input", checkPassword);
+inputPassword.addEventListener("blur", checkPassword);
 inputConfirmPassword.addEventListener("input", checkConfirmPassword);
+inputConfirmPassword.addEventListener("blur", checkConfirmPassword);
 
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
