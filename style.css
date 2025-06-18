@@ -7,6 +7,7 @@ body {
   justify-content: center;
 }
 #container-form {
+  box-sizing: border-box;
   display: flex;
   /* justify-content: center; */
   flex-direction: column;
@@ -30,4 +31,27 @@ body {
 }
 .txt-header {
   color: #ffffff;
+}
+#form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+.section-input {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  width: 375px;
+}
+.container-input {
+  display: flex;
+  flex-direction: column;
+}
+.error-message-postal-code {
+  width: 311px;
+}
+.error-message-email,
+.error-message-password,
+.error-message-confirm-password {
+  width: 100%;
 }
