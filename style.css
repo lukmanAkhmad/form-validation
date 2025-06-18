@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+#container-form {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+
+  border: 1px solid red;
+  border-radius: 9px;
+  width: 473px;
+  height: 500px;
+  margin-top: 99px;
+}
+#header-container-form {
+  background: #e95420;
+  height: 67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-bottom: 15px; */
+  width: 100%;
+  border-radius: 9px 9px 0 0;
+}
+.txt-header {
+  color: #ffffff;
+}

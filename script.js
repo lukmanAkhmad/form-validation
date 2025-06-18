@@ -101,3 +101,5 @@ btnSubmit.addEventListener("click", (e) => {
   checkPassword();
   checkConfirmPassword();
 });
+
+// styling form
