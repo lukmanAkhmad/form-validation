@@ -13,6 +13,7 @@ const errorMessagePassword = document.querySelector(".error-message-password");
 const errorMessageConfirmPassword = document.querySelector(
   ".error-message-confirm-password"
 );
+const btnReset = document.querySelector("#btn-reset");
 
 function checkEmail() {
   if (inputEmail.validity.valid) {
@@ -92,6 +93,14 @@ inputPassword.addEventListener("input", checkPassword);
 inputPassword.addEventListener("blur", checkPassword);
 inputConfirmPassword.addEventListener("input", checkConfirmPassword);
 inputConfirmPassword.addEventListener("blur", checkConfirmPassword);
+
+btnReset.addEventListener("click", () => {
+  errorMessageEmail.textContent = "";
+  errorMessagePostalCode.textContent = "";
+  errorMessagePassword.textContent = "";
+  errorMessageConfirmPassword.textContent = "";
+  form.reset();
+});
 
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
