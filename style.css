@@ -13,14 +13,14 @@ body {
   flex-direction: column;
   align-items: center;
 
-  border: 1px solid red;
+  border: 1px solid #2c001e;
   border-radius: 9px;
   width: 473px;
   height: 500px;
   margin-top: 99px;
 }
 #header-container-form {
-  background: #e95420;
+  background: #2c001e;
   height: 67px;
   display: flex;
   align-items: center;
@@ -47,11 +47,45 @@ body {
   display: flex;
   flex-direction: column;
 }
+label {
+  font-size: 18px;
+}
 .error-message-postal-code {
   width: 311px;
+  font-size: 15px;
+  color: red;
 }
 .error-message-email,
 .error-message-password,
 .error-message-confirm-password {
   width: 100%;
+  font-size: 15px;
+  color: red;
+}
+.input-field {
+  width: inherit;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  height: 30px;
+  font-size: 18px;
+  margin-bottom: 5px;
+  outline: none;
+}
+.input-field-country {
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+  height: 30px;
+  font-size: 18px;
+  outline: none;
+  margin-bottom: 5px;
+}
+.input-field:hover,
+.input-field-country:hover {
+  border: 1px solid blue;
+}
+.input-field:focus,
+.input-field-country:focus {
+  border: 2px solid blue;
+  box-shadow: 2px 3px 7px 0px grey;
 }

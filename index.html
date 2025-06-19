@@ -16,12 +16,18 @@
         <section class="section-input">
           <div class="container-input">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
+            <input
+              class="input-field"
+              type="email"
+              id="email"
+              name="email"
+              required
+            />
             <span class="error-message-email" aria-live="polite"></span>
           </div>
           <div class="container-input">
             <label for="country">Country</label>
-            <select name="" id="country">
+            <select class="input-field-country" name="" id="country">
               <option value="Indonesia">Indonesia</option>
               <option value="French">France</option>
               <option value="German">Germany</option>
@@ -29,17 +35,24 @@
           </div>
           <div class="container-input">
             <label for="postal-code">Postal Code</label>
-            <input type="text" id="postal-code" required />
+            <input class="input-field" type="text" id="postal-code" required />
             <span class="error-message-postal-code" aria-live="polite"></span>
           </div>
           <div class="container-input">
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required />
+            <input
+              class="input-field"
+              type="password"
+              id="password"
+              name="password"
+              required
+            />
             <span class="error-message-password" aria-live="polite"></span>
           </div>
           <div class="container-input">
             <label for="confirm-password">Confirm Password</label>
             <input
+              class="input-field"
               type="password"
               id="confirm-password"
               name="confirm-password"
