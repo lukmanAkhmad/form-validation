@@ -89,5 +89,27 @@ label {
   border: 2px solid blue;
   box-shadow: 2px 3px 7px 0px grey;
 }
-
-/* style btn section */
+.section-btn {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+#btn-reset,
+#btn-submit {
+  flex-grow: 1;
+  background-color: #2c001e;
+  height: 30px;
+  border: 0;
+  color: white;
+  font-size: 15px;
+  font-weight: bolder;
+  border-radius: 5px;
+}
+#btn-reset:hover,
+#btn-submit:hover {
+  background-color: white;
+  color: #2c001e;
+  box-shadow: 2px 2px 2px #2c001e;
+  border: 1px solid #2c001e;
+}
