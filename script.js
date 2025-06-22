@@ -18,14 +18,22 @@ const btnReset = document.querySelector("#btn-reset");
 function checkEmail() {
   if (inputEmail.validity.valid) {
     errorMessageEmail.textContent = "";
+    deleteErrorClass(inputEmail);
   }
 
   if (inputEmail.validity.valueMissing) {
     errorMessageEmail.textContent = "You need enter an email address.";
+    createErrorClass(inputEmail);
   } else if (inputEmail.validity.typeMismatch) {
     errorMessageEmail.textContent =
       "Entered value needs to be an email address.";
+    createErrorClass(inputEmail);
   }
+}
+
+function checkCountry() {
+  inputPostalCode.value = "";
+  checkPostalCode();
 }
 
 function checkPostalCode() {
@@ -50,10 +58,13 @@ function checkPostalCode() {
 
   if (inputPostalCode.value === "") {
     errorMessagePostalCode.textContent = errorMessage;
+    createErrorClass(inputPostalCode);
   } else if (constraint.test(inputPostalCode.value)) {
     errorMessagePostalCode.textContent = "";
+    deleteErrorClass(inputPostalCode);
   } else {
     errorMessagePostalCode.textContent = constraints[countryField.value][1];
+    createErrorClass(inputPostalCode);
   }
 }
 
@@ -63,11 +74,14 @@ function checkPassword() {
 
   if (inputPassword.validity.valueMissing) {
     errorMessagePassword.textContent = "You need enter a password.";
+    createErrorClass(inputPassword);
   } else if (!patternPassword.test(inputPassword.value)) {
     errorMessagePassword.textContent =
       "Password must be at least 8 - 16 characters long.";
+    createErrorClass(inputPassword);
   } else if (patternPassword.test(inputPassword.value)) {
     errorMessagePassword.textContent = "";
+    deleteErrorClass(inputPassword);
   }
 }
 
@@ -84,9 +98,12 @@ function checkConfirmPassword() {
   }
 }
 
+const createErrorClass = (elem) => elem.classList.add("error");
+const deleteErrorClass = (elem) => elem.classList.remove("error");
+
 inputEmail.addEventListener("input", checkEmail);
 inputEmail.addEventListener("blur", checkEmail);
-countryField.addEventListener("change", checkPostalCode);
+countryField.addEventListener("change", checkCountry);
 inputPostalCode.addEventListener("input", checkPostalCode);
 inputPostalCode.addEventListener("blur", checkPostalCode);
 inputPassword.addEventListener("input", checkPassword);

@@ -111,3 +111,9 @@ label {
   box-shadow: 2px 2px 2px #2c001e;
   border: 1px solid #2c001e;
 }
+.error {
+  border: 2px solid red;
+}
+
+/* jika input password belum valid, maka disable field confirm password */
+/* jika password match, error message confirm password warananya green*/
