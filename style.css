@@ -114,6 +114,15 @@ label {
 .error {
   border: 2px solid red;
 }
-
-/* jika input password belum valid, maka disable field confirm password */
-/* jika password match, error message confirm password warananya green*/
+#confirm-password:disabled {
+  background: #eee;
+  border: 1px solid #ccc;
+}
+label:has(+ :disabled) {
+  color: #aaa;
+}
+span.match {
+  width: 100%;
+  font-size: 15px;
+  color: green;
+}

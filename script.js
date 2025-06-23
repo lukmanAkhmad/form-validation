@@ -75,13 +75,16 @@ function checkPassword() {
   if (inputPassword.validity.valueMissing) {
     errorMessagePassword.textContent = "You need enter a password.";
     createErrorClass(inputPassword);
+    disableInputConfirmPassword();
   } else if (!patternPassword.test(inputPassword.value)) {
     errorMessagePassword.textContent =
       "Password must be at least 8 - 16 characters long.";
     createErrorClass(inputPassword);
+    disableInputConfirmPassword();
   } else if (patternPassword.test(inputPassword.value)) {
     errorMessagePassword.textContent = "";
     deleteErrorClass(inputPassword);
+    enableInputConfirmPassword();
   }
 }
 
@@ -89,17 +92,38 @@ function checkConfirmPassword() {
   const passwordValue = inputPassword.value;
   const confirmPasswordValue = inputConfirmPassword.value;
 
+  if (confirmPasswordValue === "" && inputConfirmPassword.disabled) {
+    errorMessageConfirmPassword.textContent = "";
+    return;
+  }
+
   if (passwordValue === confirmPasswordValue) {
     errorMessageConfirmPassword.textContent = "Passwords Match.";
+    createMatchClass();
   }
 
   if (passwordValue !== confirmPasswordValue || confirmPasswordValue === "") {
     errorMessageConfirmPassword.textContent = "Passwords do not match.";
+    deleteMatchClass();
   }
 }
 
 const createErrorClass = (elem) => elem.classList.add("error");
 const deleteErrorClass = (elem) => elem.classList.remove("error");
+const disableInputConfirmPassword = () => {
+  inputConfirmPassword.value = "";
+  errorMessageConfirmPassword.textContent = "";
+  inputConfirmPassword.disabled = true;
+};
+const enableInputConfirmPassword = () => {
+  inputConfirmPassword.disabled = false;
+};
+const createMatchClass = () => {
+  errorMessageConfirmPassword.classList.add("match");
+};
+const deleteMatchClass = () => {
+  errorMessageConfirmPassword.classList.remove("match");
+};
 
 inputEmail.addEventListener("input", checkEmail);
 inputEmail.addEventListener("blur", checkEmail);
@@ -121,11 +145,8 @@ btnReset.addEventListener("click", () => {
 
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
-
   checkEmail();
   checkPostalCode();
   checkPassword();
   checkConfirmPassword();
 });
-
-// styling form
