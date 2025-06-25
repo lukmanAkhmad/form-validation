@@ -58,12 +58,14 @@ function checkPostalCode() {
 
   if (inputPostalCode.value === "") {
     errorMessagePostalCode.textContent = errorMessage;
+    inputPostalCode.patternMismatch;
     createErrorClass(inputPostalCode);
   } else if (constraint.test(inputPostalCode.value)) {
     errorMessagePostalCode.textContent = "";
     deleteErrorClass(inputPostalCode);
   } else {
     errorMessagePostalCode.textContent = constraints[countryField.value][1];
+    inputPostalCode.patternMismatch;
     createErrorClass(inputPostalCode);
   }
 }
@@ -124,6 +126,16 @@ const createMatchClass = () => {
 const deleteMatchClass = () => {
   errorMessageConfirmPassword.classList.remove("match");
 };
+const checkErrorMessage = () => {
+  if (
+    errorMessageEmail.textContent === "" &&
+    errorMessagePostalCode.textContent === "" &&
+    errorMessagePassword.textContent === "" &&
+    errorMessageConfirmPassword.textContent === "Passwords Match."
+  ) {
+    return true;
+  }
+};
 
 inputEmail.addEventListener("input", checkEmail);
 inputEmail.addEventListener("blur", checkEmail);
@@ -149,4 +161,6 @@ btnSubmit.addEventListener("click", (e) => {
   checkPostalCode();
   checkPassword();
   checkConfirmPassword();
+
+  if (checkErrorMessage()) alert("Submitted! High five 🙌");
 });
